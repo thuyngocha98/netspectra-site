@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — NetSpectra</title>
+<meta name="description" content="NetSpectra privacy policy: an offline-first Android Wi-Fi & LAN scanner that collects no data. No accounts, no servers, no ads, no analytics or tracking SDKs.">
+<link rel="canonical" href="https://netspectra.app/privacy.html">
+<meta name="theme-color" content="#0b0e13">
+<link rel="icon" href="assets/icon.png" type="image/png">
+<style>
+  :root{--bg:#0b0e13;--panel:#12161e;--text:#e8eef5;--muted:#99a6b4;--cyan:#00e5ff;--border:#242b35}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  a{color:var(--cyan);text-decoration:none}
+  .wrap{max-width:780px;margin:0 auto;padding:0 16px}
+  header{border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(11,14,19,.85);backdrop-filter:blur(10px)}
+  .nav{display:flex;align-items:center;gap:10px;height:58px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--text)}
+  .brand img{width:26px;height:26px;border-radius:6px}
+  .nav a.back{margin-left:auto;color:var(--muted)}
+  h1{font-size:2rem;margin:.6em 0 .2em}
+  h2{font-size:1.25rem;margin:1.6em 0 .4em}
+  p,li{color:#cdd6e0}
+  .meta{color:var(--muted);font-size:.92rem}
+  table{width:100%;border-collapse:collapse;margin:1em 0;font-size:.95rem}
+  th,td{border:1px solid var(--border);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:var(--panel);color:var(--text)}
+  code{background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:1px 5px;font-size:.88em}
+  footer{border-top:1px solid var(--border);margin-top:40px;padding:24px 0;color:var(--muted);font-size:.9rem}
+  main{padding:10px 0 20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="assets/icon.png" alt="NetSpectra icon"> NetSpectra</a>
+    <a class="back" href="index.html">← Back to home</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>NetSpectra Privacy Policy</h1>
+  <p class="meta"><strong>Effective date:</strong> October 23, 2026<br>
+  <strong>App:</strong> NetSpectra (Android, package <code>com.hatn.netspectra</code>)<br>
+  <strong>Developer:</strong> THUY NGOC HA<br>
+  <strong>Support:</strong> thuyngocha98@gmail.com, or the contact email listed on NetSpectra's Google Play store page</p>
+
+  <h2>1. Overview</h2>
+  <p>NetSpectra is an offline-first local network utility: a Wi-Fi and LAN scanner that does all of its work on your device. It has no user accounts, no servers of its own, no advertising and no analytics, telemetry, crash-reporting or tracking SDKs. Its core features need only your local Wi-Fi network, not an internet service.</p>
+  <p>The developer does not collect, transmit or monetize any personal data, IP addresses, MAC addresses, device inventories or Wi-Fi scan results. All diagnostic operations run strictly in your device's memory and in the app's local SQLite (Room) database on your device. The developer never receives or stores anything from the app.</p>
+
+  <h2>2. Summary</h2>
+  <table>
+    <tr><th>Question</th><th>Answer</th></tr>
+    <tr><td>What we collect</td><td><strong>Nothing.</strong> No data from the app ever reaches the developer.</td></tr>
+    <tr><td>Third-party SDKs</td><td><strong>None</strong> for analytics, ads, telemetry or tracking. The only Google library in the app is Google Play Billing.</td></tr>
+    <tr><td>Accounts</td><td><strong>None.</strong> No sign-up or login.</td></tr>
+    <tr><td>Ads</td><td><strong>None.</strong></td></tr>
+  </table>
+  <p><strong>No third-party SDKs.</strong> NetSpectra contains no Google Firebase, no advertising or attribution trackers and no telemetry or crash-reporting frameworks. The only Google library it includes is the Google Play Billing Library, used for the optional one-time NetSpectra Pro purchase (see section 6).</p>
+
+  <h2>3. Data stored on your device</h2>
+  <p>NetSpectra keeps the following only in its private app storage on your device, until you clear it or uninstall the app. Other apps cannot read it, and it is excluded from Android cloud backup (the app disables backup). No copy is ever sent to the developer or to anyone else.</p>
+  <ul>
+    <li><strong>Scan history (Room database):</strong> for each scan, the time, the Wi-Fi network name (SSID) and access point identifier (BSSID) when Android makes them available, used as a key so scans of the same network can be compared, the subnet, and a snapshot of the devices found (IP address, name, device type, open ports, response time and how each device was detected). This powers History and the "what changed" comparison.</li>
+    <li><strong>Your device labels (Room database):</strong> nicknames, "trusted" marks and first-seen dates attached to devices.</li>
+    <li><strong>Settings:</strong> scan timeout and parallelism, and small interface preferences (for example, whether a tip was dismissed).</li>
+    <li><strong>Pro purchase cache (SharedPreferences):</strong> whether NetSpectra Pro was confirmed by Google Play, and when, so Pro keeps working offline.</li>
+  </ul>
+  <p><strong>How to delete it:</strong> delete individual snapshots in History, or use Settings → "Clear scan history" (this keeps nicknames and trusted marks). Clear a nickname from a device's detail sheet. To remove everything, use Android Settings → Apps → NetSpectra → Storage → Clear storage, or uninstall the app. Because the developer holds no copy, there is nothing to request from us.</p>
+
+  <h2>4. Permissions</h2>
+  <p>Every permission below is used strictly on your device. None of them is used to send data to the developer.</p>
+  <table>
+    <tr><th>Permission</th><th>Why NetSpectra needs it</th></tr>
+    <tr><td>Precise and approximate location (<code>ACCESS_FINE_LOCATION</code>, <code>ACCESS_COARSE_LOCATION</code>)</td><td>Android only lets apps read Wi-Fi scan results and the connected network's name (SSID/BSSID) when they hold location access. NetSpectra needs them for the Wi-Fi spectrum view and to name your network in History. Your location is never computed, stored or sent: the app does not read GPS or coordinates. Optional: scanning works without it; the network name is then hidden and the spectrum view is unavailable.</td></tr>
+    <tr><td>Internet (<code>INTERNET</code>)</td><td>Android requires it for any network socket, including raw socket probing of your local subnet (ICMP, TCP and UDP on your LAN) and the tools you run yourself (see section 5).</td></tr>
+    <tr><td>Network state (<code>ACCESS_NETWORK_STATE</code>)</td><td>To find your Wi-Fi connection, its IP address, subnet, gateway and DNS servers so the scan targets the right local network.</td></tr>
+    <tr><td>Wi-Fi state (<code>ACCESS_WIFI_STATE</code>)</td><td>To read Wi-Fi connection details and nearby Wi-Fi scan results for the spectrum view.</td></tr>
+    <tr><td>Change Wi-Fi state (<code>CHANGE_WIFI_STATE</code>)</td><td>To ask Android to refresh the list of nearby Wi-Fi networks. NetSpectra never connects to, disconnects from or changes your Wi-Fi networks.</td></tr>
+    <tr><td>Wi-Fi multicast (<code>CHANGE_WIFI_MULTICAST_STATE</code>)</td><td>To receive local discovery replies (mDNS and SSDP/UPnP) from devices on your network while a scan runs.</td></tr>
+    <tr><td>Nearby Wi-Fi devices (<code>NEARBY_WIFI_DEVICES</code>, Android 13+)</td><td>Requested with location on Android 13 and later, for the same Wi-Fi information.</td></tr>
+    <tr><td>Google Play billing (<code>com.android.vending.BILLING</code>)</td><td>Added by the Play Billing Library, to offer the optional one-time NetSpectra Pro purchase.</td></tr>
+  </table>
+  <p>On-device integrity check: to protect the Pro purchase, the app reads locally whether it was installed from Google Play and whether it is a debuggable build. This is checked on the device only; nothing is sent.</p>
+
+  <h2>5. Network traffic the app generates</h2>
+  <p>NetSpectra is a network tool, so it sends packets. Scanning stays on your local network:</p>
+  <ul>
+    <li><strong>Network scan:</strong> ICMP echo (ping) and TCP connection attempts to addresses in your current Wi-Fi subnet; mDNS and SSDP/UPnP discovery messages on your local network; NetBIOS name queries and a few TCP port checks to devices that answered, to identify them. UPnP devices publish their description over plain <code>http://</code> on your LAN, so the app fetches it unencrypted, only from the device that announced it.</li>
+    <li><strong>Reverse DNS names:</strong> to name devices, the app asks only DNS servers with private (LAN) addresses, such as your router. Public resolvers never see these lookups.</li>
+    <li><strong>Device vendor names</strong> come from the devices themselves and from a manufacturer (OUI) database built into the app. No online lookup service is used.</li>
+  </ul>
+  <p><strong>What leaves your device, only when you ask:</strong></p>
+  <ul>
+    <li><strong>DNS lookup tool:</strong> the domain name you type is sent, as a standard unencrypted DNS query, to the resolver you pick: your network's DNS server by default, or Google Public DNS (8.8.8.8) or Cloudflare (1.1.1.1) when you select them. That operator receives the query and your public IP address under its own privacy policy.</li>
+    <li><strong>Ping, port scan and traceroute:</strong> packets go only to the host or address you enter (traceroute offers 8.8.8.8 and 1.1.1.1 as quick picks). If you enter a host name, your device's DNS resolves it.</li>
+    <li><strong>Export (Pro):</strong> a JSON or CSV file of a scan is created on your device and handed to the Android share sheet. It goes only where you choose to share it, under that destination's own privacy policy.</li>
+    <li><strong>Wake-on-LAN:</strong> sends a "magic packet" containing the MAC address you typed as a broadcast on your local network.</li>
+    <li><strong>Google Play Billing:</strong> talks to Google Play for the Pro purchase (see section 6).</li>
+  </ul>
+  <p>NetSpectra never sends MAC addresses, network payloads or scan results to the developer or to any third party. Scan results leave your device only if you export and share them yourself.</p>
+
+  <h2>6. Google Play Billing</h2>
+  <p>NetSpectra Pro is an optional one-time, lifetime purchase. Purchases are processed directly and securely by Google Play Services. We never store or process your credit card or personal billing details. The app receives from Google Play only what it needs to unlock Pro: the product (<code>netspectra_pro_lifetime</code>), the purchase state and a purchase token, which it uses on your device to acknowledge the purchase with Google Play, then caches as a simple "Pro owned" flag. None of it is sent to the developer.</p>
+  <p>Google processes the payment, associates the purchase with your Google account and may receive billing-related diagnostics from the Play Billing Library, all under the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>. Purchases are restored through Google Play on any device signed in to the same Google account; refunds follow Google Play's refund policies.</p>
+
+  <h2>7. Children</h2>
+  <p>NetSpectra is a network utility for a general audience and is not directed at children under 13. It does not knowingly collect personal information from anyone, including children; it collects no personal information at all.</p>
+
+  <h2>8. Security</h2>
+  <p>Your data stays in NetSpectra's private storage, protected by Android's app sandbox. App-data backup is disabled, so the app does not copy your scan history to the cloud. Because nothing is sent to the developer, there is no server copy to breach. Protect your device with a screen lock, and take care where you share exported files: they describe your network.</p>
+
+  <h2>9. Changes to this policy</h2>
+  <p>If NetSpectra's data practices change, this policy will be updated and its effective date changed. Material changes will be noted in the app's release notes before they take effect.</p>
+
+  <h2>10. Contact</h2>
+  <p>Questions about this policy or the app: THUY NGOC HA, <strong>thuyngocha98@gmail.com</strong>, or the contact email listed on NetSpectra's Google Play store page.</p>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 NetSpectra · THUY NGOC HA · <a href="index.html">Home</a></div>
+</footer>
+</body>
+</html>

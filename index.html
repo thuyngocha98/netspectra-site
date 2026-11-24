@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NetSpectra — See Who's on Your Wi-Fi (Android LAN Scanner)</title>
+<meta name="description" content="NetSpectra is a fast, offline-first Wi-Fi & LAN scanner for Android. See every device on your network, find who's on your Wi-Fi, and know what changed since your last scan. No root, no ads, no account.">
+<link rel="canonical" href="https://netspectra.app/">
+<meta name="theme-color" content="#0b0e13">
+<meta name="robots" content="index,follow,max-image-preview:large">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NetSpectra">
+<meta property="og:title" content="NetSpectra — See Who's on Your Wi-Fi (Android LAN Scanner)">
+<meta property="og:description" content="A fast, offline-first Wi-Fi & LAN scanner for Android. See every device, find who's on your Wi-Fi, and spot what changed since your last scan. No root, no ads, no account.">
+<meta property="og:url" content="https://netspectra.app/">
+<meta property="og:image" content="https://netspectra.app/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NetSpectra — See Who's on Your Wi-Fi">
+<meta name="twitter:description" content="Offline-first Wi-Fi & LAN scanner for Android. See every device and what changed since your last scan.">
+<meta name="twitter:image" content="https://netspectra.app/assets/og.png">
+<link rel="icon" href="assets/icon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/icon.png">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "NetSpectra: WiFi & LAN Scanner",
+  "operatingSystem": "Android 8.0+",
+  "applicationCategory": "UtilitiesApplication",
+  "description": "A fast, offline-first Wi-Fi and LAN scanner for Android. See every device on your network, find who's on your Wi-Fi, and know what changed since your last scan. No root, no ads, no account; scan data stays on your phone.",
+  "url": "https://netspectra.app/",
+  "image": "https://netspectra.app/assets/og.png",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.hatn.netspectra",
+  "author": { "@type": "Person", "name": "THUY NGOC HA" },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Free to scan. Optional one-time NetSpectra Pro at $4.99 (US) — no subscription."
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "NetSpectra",
+  "url": "https://netspectra.app/",
+  "logo": "https://netspectra.app/assets/icon.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How do I see who's on my Wi-Fi on Android?","acceptedAnswer":{"@type":"Answer","text":"Install NetSpectra, connect to your Wi-Fi, and tap Scan. It lists every device on your network with its name, IP address, response time and open ports. Device names come from mDNS, SSDP, NetBIOS and reverse DNS, so phones, laptops, TVs and smart-home gear show real names."}},
+    {"@type":"Question","name":"Does NetSpectra need root?","acceptedAnswer":{"@type":"Answer","text":"No. NetSpectra discovers devices using unprivileged ICMP ping sockets plus a TCP check on common ports, so it runs on a normal, non-rooted Android phone. A full /24 of 254 addresses takes about 8–9 seconds on a 2019 Galaxy S10."}},
+    {"@type":"Question","name":"Is NetSpectra private? Does my scan data leave the phone?","acceptedAnswer":{"@type":"Answer","text":"NetSpectra is offline-first and has no ads, no analytics, no trackers and no account. Scan results are stored only on your device and are never sent to a server. Data leaves your phone only if you export a scan and share it yourself."}},
+    {"@type":"Question","name":"Can it show the MAC address or brand of every device?","acceptedAnswer":{"@type":"Answer","text":"No. Android 10 and later hide other devices' MAC addresses from apps, so NetSpectra can't show hardware brands for devices on your LAN. Vendor lookup works for Wi-Fi access points using an on-device IEEE database."}},
+    {"@type":"Question","name":"Is NetSpectra free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Scanning, comparing your two latest scans, the Wi-Fi channel analyzer and the network tools are free. NetSpectra Pro is a one-time $4.99 purchase (US price), not a subscription, and adds unlimited scan history, CSV/JSON export, custom port ranges and extra DNS record types."}},
+    {"@type":"Question","name":"What's the difference between a Wi-Fi analyzer and a network scanner?","acceptedAnswer":{"@type":"Answer","text":"A network (LAN) scanner lists the devices on your network by IP, with names and open ports. A Wi-Fi analyzer looks at the wireless signal and channels around you. NetSpectra does both: a device scanner with Snapshot Diff, plus a 2.4/5/6 GHz channel analyzer."}}
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --bg:#0b0e13; --panel:#12161e; --panel2:#0f131a; --text:#e8eef5; --muted:#99a6b4;
+    --cyan:#00e5ff; --emerald:#2ee078; --border:#242b35; --radius:16px; --maxw:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  a{color:var(--cyan);text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 16px}
+  h1,h2,h3{line-height:1.2;letter-spacing:-.01em}
+  h1{font-size:clamp(2rem,6vw,3.3rem);margin:.2em 0 .3em;font-weight:800}
+  h2{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:800;margin:0 0 .5em}
+  h3{font-size:1.15rem;margin:0 0 .35em;font-weight:700}
+  .muted{color:var(--muted)}
+  .accent{color:var(--cyan)} .green{color:var(--emerald)}
+  /* header */
+  header{position:sticky;top:0;z-index:20;background:rgba(11,14,19,.82);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;gap:16px;height:60px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--text)}
+  .brand img{width:28px;height:28px;border-radius:7px}
+  .nav .links{margin-left:auto;display:flex;gap:22px;align-items:center}
+  .nav .links a{color:var(--muted);font-size:.95rem}
+  .nav .links a:hover{color:var(--text)}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(180deg,#2ee078,#19c063);
+    color:#06130b;font-weight:700;padding:11px 18px;border-radius:12px;white-space:nowrap}
+  .btn:hover{filter:brightness(1.06)}
+  .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--border);box-shadow:none}
+  @media(max-width:640px){.nav .links a:not(.btn){display:none}}
+  /* hero */
+  .hero{padding:64px 0 32px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:-20% -10% auto -10%;height:420px;
+    background:radial-gradient(60% 100% at 50% 0,rgba(0,229,255,.14),transparent 70%);pointer-events:none}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;position:relative}
+  .hero p.lead{font-size:1.2rem;color:var(--muted);max-width:40ch}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 14px}
+  .shot-hero{border:1px solid var(--border);border-radius:24px;max-width:300px;margin:0 auto;
+    box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;text-align:center}
+    .hero p.lead{margin-inline:auto}.cta-row{justify-content:center}}
+  /* trust strip */
+  .trust{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;padding:18px 0;
+    border-top:1px solid var(--border);border-bottom:1px solid var(--border);color:var(--muted);font-size:.92rem}
+  .trust b{color:var(--text);font-weight:600}
+  /* sections */
+  section{padding:56px 0}
+  .section-head{max-width:46ch;margin:0 0 30px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:860px){.grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+  .card .ic{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;margin-bottom:12px;
+    background:rgba(0,229,255,.12);color:var(--cyan);font-size:20px}
+  .card.g .ic{background:rgba(46,224,120,.12);color:var(--emerald)}
+  .card p{margin:0;color:var(--muted);font-size:.96rem}
+  /* screenshots */
+  .shots{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .shots figure{margin:0}
+  .shots img{border:1px solid var(--border);border-radius:16px;background:var(--panel2)}
+  .shots figcaption{color:var(--muted);font-size:.86rem;margin-top:8px;text-align:center}
+  @media(max-width:760px){.shots{grid-template-columns:1fr 1fr}}
+  /* pricing */
+  .price{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:760px}
+  @media(max-width:620px){.price{grid-template-columns:1fr}}
+  .plan{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+  .plan.pro{border-color:rgba(46,224,120,.4);box-shadow:0 0 0 1px rgba(46,224,120,.15)}
+  .plan .tag{font-size:.8rem;color:var(--emerald);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+  .plan .amt{font-size:2rem;font-weight:800;margin:.1em 0}
+  .plan ul{list-style:none;padding:0;margin:14px 0 0}
+  .plan li{padding:6px 0 6px 26px;position:relative;color:var(--muted);font-size:.95rem}
+  .plan li::before{content:"✓";position:absolute;left:0;color:var(--emerald);font-weight:700}
+  /* faq */
+  .faq details{border:1px solid var(--border);border-radius:12px;background:var(--panel);margin-bottom:10px;padding:0 18px}
+  .faq summary{cursor:pointer;list-style:none;padding:16px 0;font-weight:600;display:flex;justify-content:space-between;gap:12px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--cyan);font-weight:700}
+  .faq details[open] summary::after{content:"–"}
+  .faq p{margin:0 0 16px;color:var(--muted)}
+  /* cta + footer */
+  .cta-band{background:linear-gradient(180deg,rgba(0,229,255,.08),rgba(46,224,120,.06));
+    border:1px solid var(--border);border-radius:24px;text-align:center;padding:48px 20px;margin:20px 0}
+  footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font-size:.9rem}
+  .foot{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between}
+  .foot a{color:var(--muted)} .foot a:hover{color:var(--text)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/"><img src="assets/icon.png" alt="NetSpectra icon"> NetSpectra</a>
+    <nav class="links">
+      <a href="#features">Features</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.hatn.netspectra&amp;referrer=utm_source%3Dlanding%26utm_medium%3Dweb%26utm_campaign%3Dnav">Get it on Google Play</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>See <span class="accent">who's on your Wi-Fi</span> — and what changed.</h1>
+      <p class="lead">NetSpectra is a fast, offline-first Wi-Fi &amp; LAN scanner for Android. Scan your network, name every device, and compare scans to catch anything new. No root, no ads, no account.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.hatn.netspectra&amp;referrer=utm_source%3Dlanding%26utm_medium%3Dweb%26utm_campaign%3Dhero">Get it on Google Play</a>
+        <a class="btn ghost" href="#features">See what it does</a>
+      </div>
+      <p class="muted" style="font-size:.9rem">Android 8.0+ · Free to use · One-time Pro $4.99</p>
+    </div>
+    <div>
+      <img class="shot-hero" src="assets/hero.png" width="300" alt="NetSpectra Snapshot Diff showing a new device that joined the network and one that went offline">
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <span><b>No ads</b></span><span><b>No account</b></span><span><b>No trackers</b></span>
+  <span>Scan data <b>stays on your phone</b></span><span><b>No root</b> needed</span><span>One-time <b>$4.99</b> Pro</span>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Everything to see and understand your network</h2>
+      <p class="muted">A clean, private network scanner with the tools you actually reach for.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="ic">📡</div><h3>Who's on your Wi-Fi</h3><p>Every device with its name, IP, latency and open ports. Names come from mDNS, SSDP, NetBIOS and reverse DNS.</p></div>
+      <div class="card g"><div class="ic">🟢</div><h3>Snapshot Diff</h3><p>Compare two scans to see which devices joined, left, or changed IP — so a new device stands out instead of hiding in a list.</p></div>
+      <div class="card"><div class="ic">📶</div><h3>Wi-Fi channel analyzer</h3><p>Chart the 2.4 / 5 / 6 GHz bands, see which networks overlap with yours, and get a suggested clearer channel.</p></div>
+      <div class="card"><div class="ic">🛠️</div><h3>Full network tools</h3><p>Port scanner, ping with jitter and loss, traceroute, DNS lookup (A/AAAA/MX/TXT/CNAME/NS) and Wake-on-LAN.</p></div>
+      <div class="card"><div class="ic">⚡</div><h3>Fast, no root</h3><p>A full /24 (254 addresses) scans in about 8–9 seconds on a 2019 Galaxy S10, using unprivileged sockets — no root required.</p></div>
+      <div class="card g"><div class="ic">🔒</div><h3>Private by design</h3><p>No ads, no analytics, no trackers, no account. Scan data stays on your phone and is never sent to a server.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="privacy" style="padding-top:0">
+  <div class="wrap">
+    <div class="shots">
+      <figure><img src="assets/scanner.png" alt="NetSpectra scanner listing devices on the Wi-Fi network"><figcaption>Device scan</figcaption></figure>
+      <figure><img src="assets/diff.png" alt="NetSpectra comparing two scans to show new and offline devices"><figcaption>Snapshot Diff</figcaption></figure>
+      <figure><img src="assets/spectrum.png" alt="NetSpectra Wi-Fi channel analyzer suggesting a clearer channel"><figcaption>Wi-Fi analyzer</figcaption></figure>
+      <figure><img src="assets/dns.png" alt="NetSpectra DNS lookup tool showing TXT records"><figcaption>Network tools</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head"><h2>Simple pricing</h2><p class="muted">Free to scan. One-time Pro — no subscription, ever.</p></div>
+    <div class="price">
+      <div class="plan">
+        <div class="tag">Free</div>
+        <div class="amt">$0</div>
+        <ul>
+          <li>Full network scan with device names</li>
+          <li>Compare your two latest scans</li>
+          <li>Wi-Fi channel analyzer</li>
+          <li>Port scan, ping, traceroute, DNS, Wake-on-LAN</li>
+        </ul>
+      </div>
+      <div class="plan pro">
+        <div class="tag">Pro · one-time</div>
+        <div class="amt">$4.99 <span class="muted" style="font-size:1rem;font-weight:500">once (US)</span></div>
+        <ul>
+          <li>Unlimited scan history</li>
+          <li>Export to CSV / JSON</li>
+          <li>Custom port ranges</li>
+          <li>Extra DNS record types (AAAA, MX, TXT, CNAME, NS)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head"><h2>Frequently asked questions</h2></div>
+    <div class="faq">
+      <details open><summary>How do I see who's on my Wi-Fi on Android?</summary><p>Install NetSpectra, connect to your Wi-Fi, and tap Scan. It lists every device on your network with its name, IP address, response time and open ports. Device names come from mDNS, SSDP, NetBIOS and reverse DNS, so phones, laptops, TVs and smart-home gear show real names instead of bare IP addresses.</p></details>
+      <details><summary>Does NetSpectra need root?</summary><p>No. NetSpectra discovers devices using unprivileged ICMP ping sockets plus a TCP check on common ports, so it runs on a normal, non-rooted Android phone. A full /24 of 254 addresses takes about 8–9 seconds on a 2019 Galaxy S10.</p></details>
+      <details><summary>Is NetSpectra private? Does my scan data leave the phone?</summary><p>NetSpectra is offline-first and has no ads, no analytics, no trackers and no account. Scan results are stored only on your device and are never sent to a server. Data leaves your phone only if you export a scan and share it yourself.</p></details>
+      <details><summary>Can it show the MAC address or brand of every device?</summary><p>No. Android 10 and later hide other devices' MAC addresses from apps, so NetSpectra can't show hardware brands for devices on your LAN. Vendor lookup works for Wi-Fi access points using an on-device IEEE database.</p></details>
+      <details><summary>Is NetSpectra free?</summary><p>Yes. Scanning, comparing your two latest scans, the Wi-Fi channel analyzer and the network tools are free. NetSpectra Pro is a one-time $4.99 purchase (US price), not a subscription, and adds unlimited scan history, CSV/JSON export, custom port ranges and extra DNS record types.</p></details>
+      <details><summary>What's the difference between a Wi-Fi analyzer and a network scanner?</summary><p>A network (LAN) scanner lists the devices on your network by IP, with names and open ports. A Wi-Fi analyzer looks at the wireless signal and channels around you. NetSpectra does both: a device scanner with Snapshot Diff, plus a 2.4 / 5 / 6 GHz channel analyzer.</p></details>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>Know exactly what's on your network.</h2>
+      <p class="muted" style="max-width:48ch;margin:0 auto 22px">Free to scan, private by design, no root. Grab NetSpectra on Google Play.</p>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.hatn.netspectra&amp;referrer=utm_source%3Dlanding%26utm_medium%3Dweb%26utm_campaign%3Dfooter">Get it on Google Play</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>© 2026 NetSpectra · THUY NGOC HA</div>
+    <div style="display:flex;gap:20px">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="https://play.google.com/store/apps/details?id=com.hatn.netspectra">Google Play</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
